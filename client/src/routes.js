@@ -26,6 +26,7 @@ import Unarchive from "@material-ui/icons/Unarchive";
 import Language from "@material-ui/icons/Language";
 // core components/views for Admin layout
 import DashboardPage from "views/Dashboard/Dashboard.js";
+import News from "views/News/News.js";
 import UserProfile from "views/UserProfile/UserProfile.js";
 import TableList from "views/TableList/TableList.js";
 import Typography from "views/Typography/Typography.js";
@@ -62,11 +63,11 @@ const dashboardRoutes = [
     layout: "/admin",
   },
   {
-    path: "/typography",
-    name: "Typography",
+    path: "/news",
+    name: "News",
     rtlName: "طباعة",
     icon: LibraryBooks,
-    component: Typography,
+    component: News,
     layout: "/admin",
   },
   {
