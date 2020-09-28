@@ -1,27 +1,28 @@
-import { useEffect, useReducer } from 'react';
-import axios from 'axios';
-import dataReducer, { SET_USERS } from '../reducers/dataReducer';
+import { useEffect, useReducer } from "react";
+import axios from "axios";
+import mapReducer, { SET_MAP_DATA } from "../reducers/mapReducer";
 
-const useApplicationData = () => {
-  const [state, dispatch] = useReducer(dataReducer, {
-    users: [],
+const useApplicationMapData = () => {
+  const [stateMap, dispatch] = useReducer(mapReducer, {
+    mapData: [],
+    userFavourite: [],
     loading: true,
   });
 
   useEffect(() => {
     axios({
-      method: 'GET',
-      url: '/api/users',
+      method: "GET",
+      url: "https://disease.sh/v3/covid-19/countries",
     }).then(({ data }) => {
+      console.group(data);
       // update the state with the result
-      dispatch({ type: SET_USERS, users: data });
+      dispatch({ type: SET_MAP_DATA, mapData: data });
     });
   }, []);
 
   return {
-    state,
-    dispatch,
+    stateMap,
   };
 };
 
-export default useApplicationData;
+export default useApplicationMapData;
